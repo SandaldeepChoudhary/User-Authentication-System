@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const page = () => {
+const LoginPage = () => {
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -90,4 +90,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LoginPage;
