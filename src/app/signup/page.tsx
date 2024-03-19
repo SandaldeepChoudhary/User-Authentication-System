@@ -29,7 +29,8 @@ const SignupPage = () => {
     }
   }, [user]);
 
-  const onSignup = async () => {
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await axios.post("/api/users/signup", user);
@@ -57,7 +58,7 @@ const SignupPage = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <div className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="username"
@@ -123,7 +124,6 @@ const SignupPage = () => {
 
           <div>
             <button
-              onClick={onSignup}
               className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
                 buttonDisabled
                   ? "bg-gray-500 cursor-not-allowed"
@@ -133,7 +133,7 @@ const SignupPage = () => {
               {buttonDisabled ? "No Sign Up" : "Sign up"}
             </button>
           </div>
-        </div>
+        </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Already have an account?{" "}

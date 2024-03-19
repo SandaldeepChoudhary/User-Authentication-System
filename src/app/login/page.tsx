@@ -13,7 +13,10 @@ const LoginPage = () => {
     password: "",
   });
 
-  const onLogin = async () => {
+
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault(); // Prevent default form submission
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
@@ -24,7 +27,7 @@ const LoginPage = () => {
         message: "Login Failed",
         success: false,
       });
-    }
+    } // Call the onLogin function to perform the login action
   };
 
   const [loading, setLoading] = useState(false);
@@ -52,7 +55,7 @@ const LoginPage = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <div className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -109,7 +112,6 @@ const LoginPage = () => {
 
             <div>
               <button
-                onClick={onLogin}
                 className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
                   buttonDisabled
                     ? "bg-gray-500 cursor-not-allowed"
@@ -119,7 +121,7 @@ const LoginPage = () => {
                 {buttonDisabled ? "No Sign in" : "Sign in"}
               </button>
             </div>
-          </div>
+          </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
