@@ -17,5 +17,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/login", "/signup", "/profile"],
+  matcher: ["/", "/login", "/signup", "/profile/:path*"],
 };
